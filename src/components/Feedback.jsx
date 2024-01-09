@@ -6,6 +6,7 @@ import FeedbackOptions from "./FeedbackOptions";
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
+  console.log(Object.keys(feedback))
 
   const handleButtonClick = (type) => {
     setFeedback((prevFeedback) => ({
