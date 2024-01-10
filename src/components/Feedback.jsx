@@ -1,19 +1,10 @@
-import React, { useState } from "react";
+
 import Section from "./Section";
 import Notification from "./Notification";
 import Statistics from "./Statistics";
 import FeedbackOptions from "./FeedbackOptions";
 
-const Feedback = () => {
-  const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
-  console.log(Object.keys(feedback))
-
-  const handleButtonClick = (type) => {
-    setFeedback((prevFeedback) => ({
-      ...prevFeedback,
-      [type]: prevFeedback[type] + 1,
-    }));
-  };
+const Feedback = ({feedback, onFeedbackChange}) => {
 
   const countTotalFeedback = () => {
     const { good, neutral, bad } = feedback;
@@ -35,7 +26,7 @@ const Feedback = () => {
       <Section title="Please leave feedback">
         <FeedbackOptions
           options={Object.keys(feedback)}
-          onLeaveFeedback={handleButtonClick}
+          onLeaveFeedback={onFeedbackChange}
         />
       </Section>
       {totalFeedback === 0 ? (
